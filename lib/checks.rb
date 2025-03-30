@@ -17,7 +17,7 @@ class Board
 
   # method to alter single value
   def turn(char, square)
-    row = (square / 3.0).round - 1
+    row = (square / 3.0).ceil - 1
     col = (square % 3) - 1
     @board_array[row][col] = char
     @board_array
