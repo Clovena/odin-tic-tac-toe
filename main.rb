@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ### Pseudocode
 #
 #
@@ -5,12 +7,10 @@
 # Store characters in a 3x3 matrix.
 # Ask for input from each player - use toggle to determine which player is up.
 # Chomp until single character remains, then overwrite player icon in that space.
-# Probably need check that input is only 1 thru 9.
 #
-# Need checks on rows (all equal in nested arrays), columns (all equal in same index in outer array),
-# 1-9 diagonal: equal values at row index = column index,
-# 7-3 diagonal: equal values at (–row index % 4) = column index
+# Need check that input is only 1 thru 9.
 
+require_relative 'lib/board'
 require_relative 'lib/checks'
 
 arr = [
