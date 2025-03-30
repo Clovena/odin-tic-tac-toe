@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 # Methods to validate game during play
-module Checks
+module Check
   def self.win_conditions(array)
     # Obtain diagonals
     diag_fwd = [] # from sq 1 to 9
     diag_bwd = [] # from sq 3 to 7
     array.each_index do |i|
-      diag_fwd << arr[i][i]
-      diag_bwd << arr[-i][i]
+      diag_fwd << array[i][i]
+      diag_bwd << array[-i][i]
     end
     # Return nested array of possible wins
     array + # Rowwise
