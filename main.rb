@@ -11,12 +11,34 @@
 # Need check that input is only 1 thru 9.
 
 require_relative 'lib/board'
+require_relative 'lib/players'
 require_relative 'lib/checks'
 
-arr = [
-  %w[X 2 3],
-  %w[4 X O],
-  %w[7 O X]
-]
+# Start new game. Compile methods from lib.
+class TicTacToe
+  attr_accessor :gameboard, :players
 
-puts arr.checks
+  def initialize
+    puts 'Welcome to CLI Tic-Tac-Toe!'
+    @gameboard = Board.new
+    @players = Players.new
+  end
+
+  def take_turn
+    print 'Pick a square: '
+    gets[0].to_i
+  end
+
+  def over?
+    Check.winner?(Check.win_conditions(@gameboard.board))
+  end
+end
+
+game = TicTacToe.new
+
+until game.over?
+  game.gameboard.turn(game.players.char1, game.take_turn)
+  break if game.over?
+
+  game.gameboard.turn(game.players.char2, game.take_turn)
+end

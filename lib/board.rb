@@ -12,11 +12,20 @@ class Board
     ]
   end
 
-  # method to alter single value
+  def format(arr)
+    squares = arr.flatten
+
+    "\n #{squares[0]} | #{squares[1]} | #{squares[2]}
+---+---+---\n #{squares[3]} | #{squares[4]} | #{squares[5]}
+---+---+---\n #{squares[6]} | #{squares[7]} | #{squares[8]} \n"
+  end
+
+  # method to write single value into board
   def turn(char, square)
     row = (square / 3.0).ceil - 1
     col = (square % 3) - 1
     @board[row][col] = char
+    puts self.format(@board)
     @board
   end
 end
