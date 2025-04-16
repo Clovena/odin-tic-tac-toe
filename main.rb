@@ -24,10 +24,11 @@ class TicTacToe
 end
 
 game = TicTacToe.new
+puts game.gameboard.format(game.gameboard.board)
 
 until game.over?
   game.gameboard.turn(game.players.char1)
-  last_turn = game.players.name1
+  last_turn = game.players.name1 # rubocop:disable Lint/UselessAssignment
   break if game.over?
 
   game.gameboard.turn(game.players.char2)

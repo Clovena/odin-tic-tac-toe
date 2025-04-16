@@ -12,6 +12,16 @@ class Board
     ]
   end
 
+  def squares_left(arr)
+    arr.flatten.select { |elem| elem.to_i.positive? }
+  end
+
+  def record_turn(square, player)
+    row = (square.to_i / 3.0).ceil - 1
+    col = (square.to_i % 3) - 1
+    @board[row][col] = player
+  end
+
   def format(arr)
     squares = arr.flatten
 
@@ -23,17 +33,14 @@ class Board
   # method to write single value into board
   def turn(player)
     print 'Pick a square: '
-    square = gets[0].to_i
-
-    until [1, 2, 3, 4, 5, 6, 7, 8, 9].include?(square)
+    square = gets[0]
+    until squares_left(@board).include?(square)
       print 'Invalid input. Pick a square: '
-      square = gets[0].to_i
+      square = gets[0]
     end
 
-    row = (square / 3.0).ceil - 1
-    col = (square % 3) - 1
-    @board[row][col] = player
-    puts self.format(@board)
+    record_turn(square, player)
+    puts format(@board)
     @board
   end
 end
