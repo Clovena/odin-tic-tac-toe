@@ -8,7 +8,7 @@ module Check
     diag_bwd = [] # from sq 3 to 7
     array.each_index do |i|
       diag_fwd << array[i][i]
-      diag_bwd << array[-i][i]
+      diag_bwd << array[-1 - i][i]
     end
     # Return nested array of possible wins
     array + # Rowwise
