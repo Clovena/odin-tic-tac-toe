@@ -16,9 +16,9 @@ module Check
       [diag_fwd] + [diag_bwd] # Diagonals
   end
 
-  def self.winner?(array)
-    array.each do |elem|
-      return true if elem.uniq.size <= 1
+  def self.winner?(matrix)
+    matrix.each do |array|
+      return true if array.uniq.size <= 1
     end
     false
   end
