@@ -15,10 +15,13 @@ class TicTacToe
   end
 
   def over?
-    Check.winner?(Check.win_conditions(@gameboard.board))
+    Check.winner?(Check.win_conditions(@gameboard.board)) ||
+      @gameboard.squares_left.empty?
   end
 
   def declare_winner(name)
+    return puts 'It\'s a tie...' if @gameboard.squares_left.empty?
+
     puts "#{name} wins!"
   end
 end
