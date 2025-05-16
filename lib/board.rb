@@ -4,15 +4,11 @@
 class Board
   attr_reader :board
 
-  def initialize
-    @board = [
-      %w[1 2 3],
-      %w[4 5 6],
-      %w[7 8 9]
-    ]
+  def initialize(board = [%w[1 2 3], %w[4 5 6], %w[7 8 9]])
+    @board = board
   end
 
-  def squares_left(arr)
+  def squares_left(arr = @board)
     arr.flatten.select { |elem| elem.to_i.positive? }
   end
 
@@ -34,7 +30,7 @@ class Board
   def turn(player)
     print 'Pick a square: '
     square = gets[0]
-    until squares_left(@board).include?(square)
+    until squares_left.include?(square)
       print 'Invalid input. Pick a square: '
       square = gets[0]
     end
